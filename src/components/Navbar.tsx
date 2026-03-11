@@ -3,9 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Lock } from 'lucide-react';
+import { Menu, X, Shield } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { NAV_LINKS } from '../constants';
 
 interface NavbarProps {
@@ -15,36 +16,78 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, scrollToForm }) => {
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavClick = (href: string) => {
+    setIsMenuOpen(false);
+    if (href.startsWith('#')) {
+      if (location.pathname !== '/') {
+        navigate('/' + href);
+      } else {
+        const element = document.querySelector(href);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate(href);
+    }
+  };
+
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-line bg-bg-paper/80 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-brand-primary flex items-center justify-center">
-              <Lock className="text-brand-secondary w-5 h-5" />
+      <nav 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? 'py-4 bg-white/80 backdrop-blur-xl border-b border-line' : 'py-6 bg-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2 group cursor-pointer">
+            <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center transition-transform group-hover:scale-110">
+              <Shield className="text-brand-secondary w-5 h-5" />
             </div>
-            <span className="text-xl font-bold tracking-tight text-brand-primary">إدارة المخاطر الإيجارية</span>
-          </div>
+            <div className="flex flex-col">
+              <span className="text-lg font-bold tracking-tight text-brand-primary leading-none">إدارة المخاطر</span>
+              <span className="text-[10px] font-bold text-brand-secondary uppercase tracking-widest mt-1">الاستقرار العقاري</span>
+            </div>
+          </Link>
 
-          <div className="hidden md:flex items-center gap-12">
+          <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
-              <a 
+              <button 
                 key={link.name} 
-                href={link.href} 
-                className="text-xs font-bold uppercase tracking-widest text-ink/60 hover:text-brand-primary transition-colors"
+                onClick={() => handleNavClick(link.href)}
+                className="text-sm font-medium text-ink/70 hover:text-brand-primary transition-colors relative group"
               >
                 {link.name}
-              </a>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-secondary transition-all group-hover:w-full"></span>
+              </button>
             ))}
+            <Link to="/about" className="text-sm font-medium text-ink/70 hover:text-brand-primary transition-colors relative group">
+              عن المنظومة
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-secondary transition-all group-hover:w-full"></span>
+            </Link>
             <button 
-              onClick={() => scrollToForm('طلب تقييم أولي')}
-              className="text-xs font-bold uppercase tracking-widest bg-brand-primary text-white px-6 py-3 hover:bg-brand-secondary hover:text-brand-primary transition-all"
+              onClick={() => {
+                if (location.pathname !== '/') {
+                  navigate('/#form');
+                } else {
+                  scrollToForm('طلب تقييم أولي');
+                }
+              }}
+              className="btn-primary py-2.5 px-6 text-sm"
             >
-              طلب تقييم
+              ابدأ الآن
             </button>
           </div>
 
-          <button className="md:hidden text-brand-primary" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className="md:hidden p-2 text-brand-primary" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
@@ -53,31 +96,61 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, scrol
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            className="fixed inset-0 z-[60] bg-brand-primary p-12 flex flex-col justify-center"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-[60] bg-white p-6 flex flex-col"
           >
-            <button className="absolute top-8 right-8 text-white" onClick={() => setIsMenuOpen(false)}>
-              <X size={32} />
-            </button>
-            <div className="flex flex-col gap-8">
-              {NAV_LINKS.map((link) => (
-                <a 
+            <div className="flex justify-between items-center mb-12">
+              <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-brand-primary rounded-lg flex items-center justify-center">
+                  <Shield className="text-brand-secondary w-4 h-4" />
+                </div>
+                <span className="font-bold text-brand-primary">إدارة المخاطر</span>
+              </Link>
+              <button className="p-2 text-brand-primary" onClick={() => setIsMenuOpen(false)}>
+                <X size={24} />
+              </button>
+            </div>
+            
+            <div className="flex flex-col gap-6">
+              {NAV_LINKS.map((link, i) => (
+                <motion.button 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
                   key={link.name} 
-                  href={link.href} 
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-4xl font-bold text-white hover:text-brand-secondary transition-colors"
+                  onClick={() => handleNavClick(link.href)}
+                  className="text-3xl font-bold text-ink hover:text-brand-secondary transition-colors text-right"
                 >
                   {link.name}
-                </a>
+                </motion.button>
               ))}
-              <button 
-                onClick={() => scrollToForm('طلب تقييم أولي')}
-                className="text-xl font-bold bg-brand-secondary text-brand-primary py-6 mt-8"
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Link to="/about" onClick={() => setIsMenuOpen(false)} className="text-3xl font-bold text-ink hover:text-brand-secondary transition-colors text-right block">
+                  عن المنظومة
+                </Link>
+              </motion.div>
+              <motion.button 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  if (location.pathname !== '/') {
+                    navigate('/#form');
+                  } else {
+                    scrollToForm('طلب تقييم أولي');
+                  }
+                }}
+                className="btn-primary w-full py-5 mt-8 text-lg"
               >
                 طلب تقييم أولي
-              </button>
+              </motion.button>
             </div>
           </motion.div>
         )}

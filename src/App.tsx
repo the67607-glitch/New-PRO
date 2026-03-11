@@ -4,16 +4,16 @@
  */
 
 import React, { useState, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { TargetAudience } from './components/TargetAudience';
-import { CoreServices } from './components/CoreServices';
-import { Packages } from './components/Packages';
-import { SeparateServices } from './components/SeparateServices';
-import { Workflow } from './components/Workflow';
-import { ContactForm } from './components/ContactForm';
+import { Home } from './pages/Home';
+import { Payment } from './pages/Payment';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { TermsAndConditions } from './pages/TermsAndConditions';
+import { About } from './pages/About';
+import { FAQ } from './pages/FAQ';
+import { Contact } from './pages/Contact';
 import { Footer } from './components/Footer';
-import { ConsultationCTA } from './components/ConsultationCTA';
 
 export default function App() {
   const [selectedPackage, setSelectedPackage] = useState<string>('');
@@ -34,41 +34,35 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-bg-paper font-sans overflow-x-hidden">
-      {/* Grid Background Overlay */}
-      <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.03]">
-        <div className="grid-container h-full w-full grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-0">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="border-l border-ink h-full" />
-          ))}
-        </div>
-      </div>
-
-      <Navbar 
-        isMenuOpen={isMenuOpen} 
-        setIsMenuOpen={setIsMenuOpen} 
-        scrollToForm={scrollToForm} 
-      />
-
-      <main className="grid-container pt-20">
-        <Hero scrollToForm={scrollToForm} />
-        <TargetAudience />
-        <CoreServices />
-        <Packages scrollToForm={scrollToForm} />
-        <SeparateServices scrollToForm={scrollToForm} />
-        <ConsultationCTA scrollToForm={scrollToForm} />
-        <Workflow />
-        
-        <ContactForm 
-          formRef={formRef}
-          selectedPackage={selectedPackage}
-          setSelectedPackage={setSelectedPackage}
-          formSubmitted={formSubmitted}
-          handleSubmit={handleSubmit}
+    <Router>
+      <div className="min-h-screen bg-white font-sans overflow-x-hidden selection:bg-brand-secondary/20">
+        <Navbar 
+          isMenuOpen={isMenuOpen} 
+          setIsMenuOpen={setIsMenuOpen} 
+          scrollToForm={scrollToForm} 
         />
 
+        <Routes>
+          <Route path="/" element={
+            <Home 
+              selectedPackage={selectedPackage}
+              setSelectedPackage={setSelectedPackage}
+              formSubmitted={formSubmitted}
+              handleSubmit={handleSubmit}
+              formRef={formRef}
+              scrollToForm={scrollToForm}
+            />
+          } />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsAndConditions />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+
         <Footer />
-      </main>
-    </div>
+      </div>
+    </Router>
   );
 }

@@ -1,72 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
   
-  --color-brand-primary: #1A2F23; /* Deep Forest Green */
-  --color-brand-secondary: #C5A059; /* Muted Gold */
-  --color-bg-paper: #F9F8F6; /* Warm Off-White */
-  --color-ink: #141414;
-  --color-line: rgba(20, 20, 20, 0.08);
+  --color-brand-primary: #09090B; /* Zinc 950 */
+  --color-brand-secondary: #3B82F6; /* Blue 500 */
+  --color-brand-accent: #10B981; /* Emerald 500 */
+  --color-bg-paper: #FFFFFF;
+  --color-bg-subtle: #FAFAFA;
+  --color-ink: #09090B;
+  --color-ink-muted: #71717A; /* Zinc 500 */
+  --color-line: rgba(0, 0, 0, 0.04);
 }
 
 @layer base {
   body {
-    @apply bg-bg-paper text-ink antialiased selection:bg-brand-secondary/30;
+    @apply bg-bg-paper text-ink antialiased selection:bg-brand-secondary/10;
     direction: rtl;
     text-align: right;
+    font-feature-settings: "cv02", "cv03", "cv04", "ss01";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-[-0.02em] font-extrabold;
   }
 }
 
 @layer components {
-  .grid-container {
-    @apply border-x border-line max-w-7xl mx-auto min-h-screen relative;
-  }
-
-  .grid-row {
-    @apply border-b border-line py-16 px-6 md:px-12 relative overflow-hidden;
-  }
-
-  .grid-col {
-    @apply border-l border-line last:border-l-0;
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 md:px-10 py-24 md:py-40;
   }
 
   .label-caps {
-    @apply text-[10px] uppercase tracking-[0.15em] font-bold text-ink/40 mb-4 block;
+    @apply text-[11px] uppercase tracking-[0.25em] font-bold text-brand-secondary mb-6 inline-flex items-center gap-2 bg-brand-secondary/5 px-3 py-1 rounded-full;
   }
 
-  .btn-premium {
-    @apply bg-brand-primary text-white px-10 py-5 rounded-none font-bold transition-all hover:bg-brand-secondary hover:text-brand-primary active:scale-[0.98] relative overflow-hidden;
+  .btn-primary {
+    @apply bg-brand-primary text-white px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 hover:bg-brand-primary/90 hover:shadow-[0_0_20px_rgba(0,0,0,0.1)] active:scale-[0.98] flex items-center justify-center gap-2;
   }
 
-  .btn-premium::after {
-    content: '';
-    @apply absolute inset-0 border border-white/10 pointer-events-none;
+  .btn-secondary {
+    @apply bg-white text-brand-primary border border-zinc-200 px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 hover:bg-bg-subtle hover:border-zinc-300 active:scale-[0.98] flex items-center justify-center gap-2;
   }
 
-  .glass-surface {
-    @apply bg-white/40 backdrop-blur-xl border border-white/20;
+  .glass-card {
+    @apply bg-white border border-zinc-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem] p-8 md:p-10 transition-all duration-500;
+  }
+
+  .bento-grid {
+    @apply grid grid-cols-1 md:grid-cols-12 gap-6;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-primary via-zinc-700 to-brand-primary;
   }
 }
 
 /* Custom animations */
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-slide-up {
-  animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.animate-reveal {
+  animation: reveal 0.6s cubic-bezier(0.2, 0, 0, 1) forwards;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-bg-paper);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-brand-primary);
+  @apply bg-zinc-200 rounded-full hover:bg-zinc-300 transition-colors;
 }

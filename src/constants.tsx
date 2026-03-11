@@ -23,7 +23,7 @@ export const NAV_LINKS: NavLink[] = [
   { name: 'الباقات', href: '#packages' },
   { name: 'خدمات منفصلة', href: '#separate-services' },
   { name: 'العمليات', href: '#workflow' },
-  { name: 'تواصل', href: '#form' },
+  { name: 'تواصل', href: '/contact' },
 ];
 
 export const HERO_STATS: Stat[] = [
@@ -60,9 +60,9 @@ export const CORE_SERVICES: ServiceItem[] = [
 ];
 
 export const PACKAGES: Package[] = [
-  { name: "باقة حتى 50 وحدة", desc: "للملاك والمحافظ الصغيرة", features: ["فحص ائتماني شامل", "توثيق العقود", "إدارة الإنذارات", "تقارير شهرية"] },
-  { name: "باقة حتى 100 وحدة", desc: "للمحافظ المتوسطة", features: ["كل مميزات الباقة السابقة", "أولوية في التنفيذ", "تحليل مخاطر متقدم", "دعم قانوني مباشر"] },
-  { name: "باقة Enterprise", desc: "لشركات الريت والمحافظ الكبرى", features: ["تغطية غير محدودة", "مدير حساب مخصص", "ربط تقني (API)", "حوكمة كاملة للعمليات"] }
+  { name: "Shield", price: "5,000", desc: "حماية حتى 50 وحدة سكنية/تجارية", features: ["فحص ائتماني شامل", "توثيق العقود", "إدارة الإنذارات", "تقارير شهرية"] },
+  { name: "Fortify", price: "10,000", desc: "حماية حتى 100 وحدة سكنية/تجارية", features: ["كل مميزات الباقة السابقة", "أولوية في التنفيذ", "تحليل مخاطر متقدم", "دعم قانوني مباشر"] },
+  { name: "Citadel", price: "20,000", desc: "حماية غير محدودة للوحدات", features: ["تغطية غير محدودة", "مدير حساب مخصص", "ربط تقني (API)", "حوكمة كاملة للعمليات"] }
 ];
 
 export const SEPARATE_SERVICES: SeparateService[] = [
@@ -83,9 +83,7 @@ export const WORKFLOW_STEPS: WorkflowStep[] = [
 
 export const SERVICE_OPTIONS = {
   main: [
-    { value: "استشارة مجانية", label: "استشارة مجانية" },
+    { value: "استشارة مهنية مجانية", label: "استشارة مهنية مجانية" },
     { value: "طلب تقييم أولي", label: "طلب تقييم أولي" },
   ],
-  packages: PACKAGES.map(p => ({ value: p.name, label: p.name })),
-  separate: SEPARATE_SERVICES.map(s => ({ value: s.title, label: s.title })),
 };

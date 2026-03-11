@@ -29,6 +29,7 @@ export interface ServiceItem {
 export interface Package {
   name: string;
   desc: string;
+  price: string;
   features: string[];
 }
 
