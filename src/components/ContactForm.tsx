@@ -37,20 +37,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           <div className="space-y-8">
             <div className="flex items-center gap-6 group">
               <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-brand-secondary border border-line group-hover:bg-brand-secondary group-hover:text-white transition-all">
-                <Phone size={20} />
-              </div>
-              <div>
-                <span className="text-xs text-ink-muted block uppercase tracking-widest font-bold mb-1">اتصل بنا</span>
-                <span className="text-lg font-bold text-brand-primary">9200 XXXXX</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-6 group">
-              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-brand-secondary border border-line group-hover:bg-brand-secondary group-hover:text-white transition-all">
                 <Mail size={20} />
               </div>
               <div>
                 <span className="text-xs text-ink-muted block uppercase tracking-widest font-bold mb-1">البريد الإلكتروني</span>
-                <span className="text-lg font-bold text-brand-primary">info@riskmanagement.sa</span>
+                <span className="text-lg font-bold text-brand-primary">info@risk.rentals</span>
               </div>
             </div>
             <div className="flex items-center gap-6 group">

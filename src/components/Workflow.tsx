@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { Search, FileText, ShieldCheck, Gavel, CheckCircle2 } from 'lucide-react';
+import { Search, FileText, ShieldCheck, Gavel, CheckCircle2, BarChart3 } from 'lucide-react';
 
 const STEPS = [
   {
@@ -37,41 +37,87 @@ const STEPS = [
 export const Workflow: React.FC = () => {
   return (
     <section className="section-container overflow-hidden">
-      <div className="text-center mb-24">
-        <span className="label-caps">كيف نعمل</span>
-        <h2 className="text-4xl md:text-6xl font-black text-brand-primary mb-6">
-          منظومة متكاملة <span className="text-brand-secondary">لحماية أصولك</span>
-        </h2>
-        <p className="text-xl text-ink-muted max-w-2xl mx-auto">
-          نحن لا نقدم مجرد خدمة، بل نبني نظاماً دفاعياً يحمي استثماراتك من البداية وحتى النهاية.
-        </p>
-      </div>
+      <div className="grid lg:grid-cols-12 gap-16 items-start">
+        {/* Left Side: Header & UCS Highlight */}
+        <div className="lg:col-span-5 space-y-12 lg:sticky lg:top-32">
+          <div>
+            <span className="label-caps">كيف نعمل</span>
+            <h2 className="text-4xl md:text-6xl font-black text-brand-primary mb-6 leading-tight">
+              منظومة متكاملة <br />
+              <span className="text-brand-secondary">لحماية أصولك</span>
+            </h2>
+            <p className="text-xl text-ink-muted leading-relaxed">
+              نحن لا نقدم مجرد خدمة، بل نبني نظاماً دفاعياً يحمي استثماراتك من البداية وحتى النهاية عبر أتمتة كاملة للعمليات.
+            </p>
+          </div>
 
-      <div className="relative">
-        {/* Connection Line */}
-        <div className="absolute top-1/2 left-0 w-full h-0.5 bg-zinc-100 -translate-y-1/2 hidden lg:block" />
+          {/* UCS Highlight - Dashboard Style */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="bg-zinc-900 text-white p-8 rounded-[2.5rem] relative overflow-hidden shadow-2xl"
+          >
+            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-secondary/20 blur-3xl rounded-full" />
+            
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-brand-secondary rounded-xl flex items-center justify-center">
+                  <BarChart3 size={20} className="text-brand-primary" />
+                </div>
+                <span className="text-xs font-bold uppercase tracking-widest text-brand-secondary">نظام UCS الموحد</span>
+              </div>
+              
+              <h3 className="text-2xl font-bold mb-4">إدارة القضايا الذكية</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed mb-8">
+                منصة مركزية تتيح لك مراقبة جميع قضاياك، تتبع مراحل التنفيذ، والحصول على تحديثات فورية حول حالة محفظتك.
+              </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+              <div className="space-y-3">
+                {[
+                  { label: 'القضايا النشطة', value: '12', color: 'bg-brand-secondary' },
+                  { label: 'نسبة الإنجاز', value: '94%', color: 'bg-brand-accent' }
+                ].map((item, i) => (
+                  <div key={i} className="bg-white/5 p-4 rounded-2xl flex justify-between items-center border border-white/10">
+                    <span className="text-xs text-zinc-400">{item.label}</span>
+                    <span className={`text-sm font-bold ${item.color.replace('bg-', 'text-')}`}>{item.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Right Side: Vertical Timeline Steps */}
+        <div className="lg:col-span-7 space-y-8 relative">
+          {/* Vertical Line */}
+          <div className="absolute top-0 right-10 w-px h-full bg-line hidden md:block" />
+
           {STEPS.map((step, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="flex flex-col items-center text-center group"
+              className="relative flex flex-col md:flex-row items-start gap-8 p-8 bg-white border border-line rounded-[2rem] hover:border-brand-secondary hover:shadow-xl transition-all group"
             >
-              <div className={`w-20 h-20 rounded-3xl flex items-center justify-center text-white ${step.color} shadow-xl shadow-${step.color.split('-')[1]}-500/20 mb-8 transition-transform group-hover:scale-110 group-hover:rotate-3`}>
-                {step.icon}
-              </div>
-              <div className="relative">
-                <div className="absolute -top-12 left-1/2 -translate-x-1/2 text-4xl font-black text-zinc-100 -z-10">
+              {/* Step Number & Icon */}
+              <div className="relative z-10 flex-shrink-0">
+                <div className={`w-20 h-20 rounded-2xl flex items-center justify-center text-white ${step.color} shadow-lg transition-transform group-hover:scale-110 group-hover:rotate-3`}>
+                  {step.icon}
+                </div>
+                <div className="absolute -top-4 -right-4 w-10 h-10 bg-white border border-line rounded-full flex items-center justify-center text-xs font-black text-brand-primary shadow-sm">
                   0{i + 1}
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-brand-primary">
+              </div>
+
+              {/* Content */}
+              <div className="flex-grow pt-2">
+                <h3 className="text-2xl font-bold text-brand-primary mb-3 group-hover:text-brand-secondary transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-ink-muted leading-relaxed">
+                <p className="text-ink-muted leading-relaxed text-lg">
                   {step.desc}
                 </p>
               </div>
@@ -79,55 +125,6 @@ export const Workflow: React.FC = () => {
           ))}
         </div>
       </div>
-
-      {/* Case System Highlight */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mt-32 glass-card bg-zinc-900 text-white p-12 md:p-20 relative overflow-hidden"
-      >
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-secondary/10 blur-[120px] rounded-full pointer-events-none" />
-        
-        <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
-          <div>
-            <span className="text-brand-secondary font-bold uppercase tracking-widest text-sm mb-6 block">الابتكار التقني</span>
-            <h2 className="text-4xl md:text-5xl font-black mb-8 leading-tight">
-              نظام إدارة القضايا <br />
-              <span className="text-brand-secondary">الموحد (UCS)</span>
-            </h2>
-            <p className="text-xl text-zinc-400 leading-relaxed mb-10">
-              منصة مركزية تتيح لك مراقبة جميع قضاياك، تتبع مراحل التنفيذ، والحصول على تحديثات فورية حول حالة محفظتك العقارية.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              {['أتمتة كاملة', 'تقارير ذكية', 'ربط مع ناجز', 'تنبيهات فورية'].map((tag, i) => (
-                <div key={i} className="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm font-medium">
-                  <CheckCircle2 size={14} className="text-brand-accent" />
-                  {tag}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="relative group">
-            <div className="absolute inset-0 bg-brand-secondary/20 blur-3xl rounded-full group-hover:bg-brand-secondary/30 transition-colors" />
-            <div className="relative bg-zinc-800 border border-white/10 rounded-3xl p-8 shadow-2xl">
-              <div className="flex justify-between items-center mb-8">
-                <div className="w-24 h-6 bg-white/10 rounded" />
-                <div className="w-10 h-10 bg-brand-secondary rounded-full" />
-              </div>
-              <div className="space-y-4">
-                <div className="w-full h-4 bg-white/5 rounded" />
-                <div className="w-3/4 h-4 bg-white/5 rounded" />
-                <div className="w-1/2 h-4 bg-white/5 rounded" />
-              </div>
-              <div className="mt-8 pt-8 border-t border-white/5 grid grid-cols-2 gap-4">
-                <div className="h-12 bg-white/5 rounded-xl" />
-                <div className="h-12 bg-white/5 rounded-xl" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 };

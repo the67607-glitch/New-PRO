@@ -16,17 +16,33 @@ export const Footer: React.FC = () => {
         <div className="grid lg:grid-cols-12 gap-16 mb-24">
           <div className="lg:col-span-4">
             <Link to="/" className="flex items-center gap-3 mb-8 group cursor-pointer">
-              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center transition-transform group-hover:rotate-12">
-                <Shield className="text-brand-primary w-6 h-6" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight leading-none">إدارة المخاطر</span>
-                <span className="text-[10px] font-bold text-brand-secondary uppercase tracking-widest mt-1">الاستقرار العقاري</span>
-              </div>
+              <img 
+                src="https://i.ibb.co/hRW4J0BP/K-1.png" 
+                alt="إدارة المخاطر" 
+                className="h-14 w-auto brightness-0 invert transition-transform group-hover:scale-105"
+                referrerPolicy="no-referrer"
+              />
+              <span className="text-xl font-bold tracking-tight leading-none text-white">
+                إدارة المخاطر الإيجارية
+              </span>
             </Link>
             <p className="text-white/50 max-w-sm leading-relaxed text-lg mb-10">
               منظومة رائدة في المملكة العربية السعودية متخصصة في حماية الاستثمارات العقارية عبر إدارة احترافية للمخاطر والتعثر.
             </p>
+            <div className="flex flex-wrap gap-3 mb-8">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+                <Shield size={12} className="text-brand-secondary" />
+                <span className="text-[10px] font-bold uppercase tracking-wider text-white/60">مرخص من وزارة العدل</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+                <Shield size={12} className="text-brand-secondary" />
+                <span className="text-[10px] font-bold uppercase tracking-wider text-white/60">مرخص من الهيئة العامة للعقار</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+                <Shield size={12} className="text-brand-secondary" />
+                <span className="text-[10px] font-bold uppercase tracking-wider text-white/60">مرخص من وزارة التجارة</span>
+              </div>
+            </div>
             <div className="flex gap-4">
               {[Twitter, Linkedin].map((Icon, i) => (
                 <a key={i} href="#" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-brand-secondary hover:text-brand-primary transition-all">
@@ -67,23 +83,27 @@ export const Footer: React.FC = () => {
           </div>
         </div>
         
-        <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-6 text-sm text-white/30">
-            <p>© {new Date().getFullYear()} إدارة المخاطر العقارية. جميع الحقوق محفوظة.</p>
-            <div className="hidden md:flex gap-6">
-              <Link to="/privacy" className="hover:text-white transition-colors">سياسة الخصوصية</Link>
-              <Link to="/terms" className="hover:text-white transition-colors">الشروط والأحكام</Link>
+        <div className="pt-12 border-t border-white/10">
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+            {/* Copyright & Legal Links */}
+            <div className="flex flex-col md:flex-row items-center gap-6 text-sm text-white/40">
+              <p>جميع الحقوق محفوظة © {new Date().getFullYear()} لمنظومة إدارة المخاطر العقارية.</p>
+              <div className="flex gap-6">
+                <Link to="/privacy" className="hover:text-brand-secondary transition-colors">سياسة الخصوصية</Link>
+                <Link to="/terms" className="hover:text-brand-secondary transition-colors">الشروط والأحكام</Link>
+              </div>
             </div>
-          </div>
-          
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 text-white/30 text-sm">
-              <Globe size={14} />
-              <span>العربية (السعودية)</span>
-            </div>
-            <div className="flex gap-4">
-              <div className="px-3 py-1 rounded-lg border border-white/10 text-[10px] font-bold uppercase tracking-widest text-white/30">نظامي ومعتمد</div>
-              <div className="px-3 py-1 rounded-lg border border-white/10 text-[10px] font-bold uppercase tracking-widest text-white/30">حوكمة كاملة</div>
+            
+            {/* Language & Badges */}
+            <div className="flex flex-wrap justify-center items-center gap-6">
+              <div className="flex items-center gap-2 text-white/40 text-sm bg-white/5 px-3 py-1.5 rounded-full border border-white/5">
+                <Globe size={14} className="text-brand-secondary" />
+                <span>المملكة العربية السعودية</span>
+              </div>
+              <div className="flex gap-3">
+                <div className="px-4 py-1.5 rounded-full border border-white/10 text-[10px] font-bold uppercase tracking-widest text-white/40 bg-white/5">نظامي ومعتمد</div>
+                <div className="px-4 py-1.5 rounded-full border border-white/10 text-[10px] font-bold uppercase tracking-widest text-white/40 bg-white/5">حوكمة كاملة</div>
+              </div>
             </div>
           </div>
         </div>

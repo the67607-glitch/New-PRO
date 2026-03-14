@@ -33,7 +33,7 @@ export const Contact: React.FC = () => {
     {
       icon: <Mail size={24} />,
       title: 'البريد الإلكتروني',
-      details: 'info@riskmanagement.sa',
+      details: 'info@risk.rentals',
       sub: 'نرد خلال 24 ساعة'
     },
     {

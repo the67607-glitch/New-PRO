@@ -117,15 +117,23 @@ export const About: React.FC = () => {
           >
             <div className="aspect-square bg-bg-subtle rounded-[3rem] overflow-hidden">
               <img 
-                src="https://picsum.photos/seed/office/800/800" 
-                alt="Our Office" 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                src="https://i.ibb.co/60kMrmmW/4-8nd.jpg" 
+                alt="رؤيتنا ورسالتنا" 
+                className="w-full h-full object-cover transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
             </div>
-            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-brand-secondary rounded-3xl p-8 text-brand-primary flex flex-col justify-end hidden md:flex">
-              <Award size={48} className="mb-4" />
-              <div className="text-2xl font-bold leading-tight">حاصلون على جوائز التميز العقاري 2025</div>
+            <div className="absolute -bottom-12 -right-12 w-80 bg-white/90 backdrop-blur-xl border border-brand-secondary/30 rounded-[2.5rem] p-10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)] hidden md:block z-20">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-14 h-14 bg-brand-secondary/10 rounded-2xl flex items-center justify-center text-brand-secondary">
+                  <Shield size={32} />
+                </div>
+                <div className="h-px flex-grow bg-brand-secondary/20" />
+              </div>
+              <h3 className="text-2xl font-bold text-brand-primary mb-3">اعتماد مؤسسي</h3>
+              <p className="text-ink-muted text-sm leading-relaxed font-medium">
+                نعمل بموجب تراخيص رسمية صادرة من وزارة العدل، الهيئة العامة للعقار، ووزارة التجارة، ملتزمين بأعلى معايير الحوكمة والشفافية.
+              </p>
             </div>
           </motion.div>
         </div>

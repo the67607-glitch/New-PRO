@@ -48,14 +48,16 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, scrol
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 group cursor-pointer">
-            <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center transition-transform group-hover:scale-110">
-              <Shield className="text-brand-secondary w-5 h-5" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-bold tracking-tight text-brand-primary leading-none">إدارة المخاطر</span>
-              <span className="text-[10px] font-bold text-brand-secondary uppercase tracking-widest mt-1">الاستقرار العقاري</span>
-            </div>
+          <Link to="/" className="flex items-center gap-3 group cursor-pointer">
+            <img 
+              src="https://i.ibb.co/hRW4J0BP/K-1.png" 
+              alt="إدارة المخاطر" 
+              className="h-12 w-auto transition-transform group-hover:scale-105"
+              referrerPolicy="no-referrer"
+            />
+            <span className="text-lg font-bold tracking-tight text-brand-primary leading-none hidden sm:block">
+              إدارة المخاطر الإيجارية
+            </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
@@ -102,11 +104,14 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, scrol
             className="fixed inset-0 z-[60] bg-white p-6 flex flex-col"
           >
             <div className="flex justify-between items-center mb-12">
-              <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-brand-primary rounded-lg flex items-center justify-center">
-                  <Shield className="text-brand-secondary w-4 h-4" />
-                </div>
-                <span className="font-bold text-brand-primary">إدارة المخاطر</span>
+              <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3">
+                <img 
+                  src="https://i.ibb.co/hRW4J0BP/K-1.png" 
+                  alt="إدارة المخاطر" 
+                  className="h-10 w-auto"
+                  referrerPolicy="no-referrer"
+                />
+                <span className="font-bold text-brand-primary">إدارة المخاطر الإيجارية</span>
               </Link>
               <button className="p-2 text-brand-primary" onClick={() => setIsMenuOpen(false)}>
                 <X size={24} />
