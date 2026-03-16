@@ -19,6 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, scrol
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const isDarkPage = location.pathname === '/about' && !scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -55,7 +56,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, scrol
               className="h-12 w-auto transition-transform group-hover:scale-105"
               referrerPolicy="no-referrer"
             />
-            <span className="text-lg font-bold tracking-tight text-brand-primary leading-none hidden sm:block">
+            <span className={`text-lg font-bold tracking-tight leading-none hidden sm:block ${isDarkPage ? 'text-white' : 'text-brand-primary'}`}>
               إدارة المخاطر الإيجارية
             </span>
           </Link>
@@ -65,13 +66,13 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, scrol
               <button 
                 key={link.name} 
                 onClick={() => handleNavClick(link.href)}
-                className="text-sm font-medium text-ink/70 hover:text-brand-primary transition-colors relative group"
+                className={`text-sm font-medium transition-colors relative group ${isDarkPage ? 'text-white/80 hover:text-white' : 'text-ink/70 hover:text-brand-primary'}`}
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-secondary transition-all group-hover:w-full"></span>
               </button>
             ))}
-            <Link to="/about" className="text-sm font-medium text-ink/70 hover:text-brand-primary transition-colors relative group">
+            <Link to="/about" className={`text-sm font-medium transition-colors relative group ${isDarkPage ? 'text-white/80 hover:text-white' : 'text-ink/70 hover:text-brand-primary'}`}>
               عن المنظومة
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-secondary transition-all group-hover:w-full"></span>
             </Link>
@@ -89,7 +90,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, scrol
             </button>
           </div>
 
-          <button className="md:hidden p-2 text-brand-primary" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className={`md:hidden p-2 ${isDarkPage ? 'text-white' : 'text-brand-primary'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X /> : <Menu />}
           </button>
         </div>

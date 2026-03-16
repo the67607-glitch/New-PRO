@@ -3,25 +3,18 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Phone, Mail, MapPin, Clock, MessageSquare } from 'lucide-react';
 import { ContactForm } from '../components/ContactForm';
+import { useContactForm } from '../hooks/useContactForm';
 
 export const Contact: React.FC = () => {
-  const [selectedPackage, setSelectedPackage] = useState<string>('');
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const formRef = useRef<HTMLDivElement>(null);
+  const { selectedPackage, setSelectedPackage, formSubmitted, formRef, handleSubmit } = useContactForm();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 5000);
-  };
 
   const contactInfo = [
     {

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Home } from './pages/Home';
@@ -14,23 +14,16 @@ import { About } from './pages/About';
 import { FAQ } from './pages/FAQ';
 import { Contact } from './pages/Contact';
 import { Footer } from './components/Footer';
+import { useContactForm } from './hooks/useContactForm';
 
 export default function App() {
-  const [selectedPackage, setSelectedPackage] = useState<string>('');
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const formRef = useRef<HTMLDivElement>(null);
+  const { selectedPackage, setSelectedPackage, formSubmitted, formRef, handleSubmit } = useContactForm();
 
   const scrollToForm = (pkg?: string) => {
     if (pkg) setSelectedPackage(pkg);
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 5000);
   };
 
   return (

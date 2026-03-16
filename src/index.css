@@ -1,16 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
-  
-  --color-brand-primary: #09090B; /* Zinc 950 */
-  --color-brand-secondary: #3B82F6; /* Blue 500 */
-  --color-brand-accent: #10B981; /* Emerald 500 */
-  --color-bg-paper: #FFFFFF;
-  --color-bg-subtle: #FAFAFA;
-  --color-ink: #09090B;
-  --color-ink-muted: #71717A; /* Zinc 500 */
+  --font-sans:
+    "Plus Jakarta Sans", "IBM Plex Sans Arabic", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-serif:
+    "Plus Jakarta Sans", "IBM Plex Sans Arabic", ui-sans-serif, system-ui,
+    sans-serif;
+
+  --color-brand-primary: #09090b; /* Zinc 950 */
+  --color-brand-secondary: #3b82f6; /* Blue 500 */
+  --color-brand-accent: #10b981; /* Emerald 500 */
+  --color-bg-paper: #ffffff;
+  --color-bg-subtle: #fafafa;
+  --color-ink: #09090b;
+  --color-ink-muted: #71717a; /* Zinc 500 */
   --color-line: rgba(0, 0, 0, 0.04);
 }
 
@@ -22,7 +27,12 @@
     font-feature-settings: "cv02", "cv03", "cv04", "ss01";
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply tracking-[-0.02em] font-extrabold;
   }
 }
@@ -59,8 +69,14 @@
 
 /* Custom animations */
 @keyframes reveal {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-reveal {
