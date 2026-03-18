@@ -4,7 +4,9 @@ const STREAMPAY_BASE = "https://stream-app-service.streampay.sa/api";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Extract the path after /streampay-api/
-  const path = (req.query.path as string[])?.join("/") || "";
+  // Vercel may pass path as a string or string[] depending on the rewrite
+  const rawPath = req.query.path;
+  const path = Array.isArray(rawPath) ? rawPath.join("/") : (rawPath || "");
   const targetUrl = `${STREAMPAY_BASE}/${path}`;
 
   const apiKey = process.env.VITE_STREAM_X_API_KEY;
