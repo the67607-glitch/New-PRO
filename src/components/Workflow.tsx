@@ -59,15 +59,15 @@ export const Workflow: React.FC = () => {
             className="bg-zinc-900 text-white p-8 rounded-[2.5rem] relative overflow-hidden shadow-2xl"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-brand-secondary/20 blur-3xl rounded-full" />
-            
+
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-brand-secondary rounded-xl flex items-center justify-center">
                   <BarChart3 size={20} className="text-brand-primary" />
                 </div>
-                <span className="text-xs font-bold uppercase tracking-widest text-brand-secondary">نظام UCS الموحد</span>
+                <span className="text-xs font-bold uppercase tracking-normal text-brand-secondary">نظام UCS الموحد</span>
               </div>
-              
+
               <h3 className="text-2xl font-bold mb-4">إدارة القضايا الذكية</h3>
               <p className="text-zinc-400 text-sm leading-relaxed mb-8">
                 منصة مركزية تتيح لك مراقبة جميع قضاياك، تتبع مراحل التنفيذ، والحصول على تحديثات فورية حول حالة محفظتك.

@@ -22,29 +22,29 @@ export const Hero: React.FC<HeroProps> = ({ scrollToForm }) => {
       </div>
 
       <div className="section-container grid lg:grid-cols-2 gap-16 items-center">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="label-caps">إدارة الأصول العقارية الذكية</span>
-          <h1 className="text-6xl md:text-8xl font-bold text-brand-primary leading-[1.1] mb-8 tracking-tight">
+          <h1 className="text-6xl md:text-8xl font-bold text-brand-primary leading-[1.1] mb-8">
             نحول المخاطر <br />
             <span className="font-serif italic text-brand-secondary">إلى استقرار</span>
           </h1>
           <p className="text-xl text-ink-muted leading-relaxed max-w-xl mb-12">
             منظومة مؤسسية متكاملة لإدارة المخاطر الإيجارية. نجمع بين الفحص الائتماني الدقيق، التوثيق القانوني المحكم، وإدارة التعثر الاحترافية لضمان تدفقاتك النقدية.
           </p>
-          
+
           <div className="flex flex-wrap gap-4">
-            <button 
+            <button
               onClick={() => scrollToForm('طلب تقييم أولي')}
               className="btn-primary group"
             >
               <span>ابدأ التقييم المجاني</span>
               <ArrowUpLeft className="w-5 h-5 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </button>
-            <a 
+            <a
               href="#packages"
               className="btn-secondary"
             >
@@ -66,8 +66,8 @@ export const Hero: React.FC<HeroProps> = ({ scrollToForm }) => {
             </div>
           </div>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -91,7 +91,7 @@ export const Hero: React.FC<HeroProps> = ({ scrollToForm }) => {
 
             <div className="space-y-8">
               {HERO_STATS.map((stat, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -103,7 +103,7 @@ export const Hero: React.FC<HeroProps> = ({ scrollToForm }) => {
                     <span className="text-2xl font-bold text-brand-primary">{stat.value}</span>
                   </div>
                   <div className="h-1.5 w-full bg-bg-subtle rounded-full overflow-hidden">
-                    <motion.div 
+                    <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: stat.value.includes('%') ? stat.value : '85%' }}
                       transition={{ duration: 1.5, delay: 0.8 + i * 0.2 }}

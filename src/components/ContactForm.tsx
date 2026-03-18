@@ -40,7 +40,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 <Mail size={20} />
               </div>
               <div>
-                <span className="text-xs text-ink-muted block uppercase tracking-widest font-bold mb-1">البريد الإلكتروني</span>
+                <span className="text-xs text-ink-muted block uppercase tracking-normal font-bold mb-1">البريد الإلكتروني</span>
                 <span className="text-lg font-bold text-brand-primary">info@risk.rentals</span>
               </div>
             </div>
@@ -49,7 +49,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 <MapPin size={20} />
               </div>
               <div>
-                <span className="text-xs text-ink-muted block uppercase tracking-widest font-bold mb-1">المقر الرئيسي</span>
+                <span className="text-xs text-ink-muted block uppercase tracking-normal font-bold mb-1">المقر الرئيسي</span>
                 <span className="text-lg font-bold text-brand-primary">الرياض، المملكة العربية السعودية</span>
               </div>
             </div>
@@ -81,22 +81,22 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-3">
-                      <label className="text-xs font-bold uppercase tracking-widest text-ink-muted">الاسم الكامل</label>
+                      <label className="text-xs font-bold uppercase tracking-normal text-ink-muted">الاسم الكامل</label>
                       <input required name="name" type="text" placeholder="أدخل اسمك الثلاثي" className="w-full bg-bg-subtle mt-3 border border-line rounded-2xl p-4 focus:border-brand-secondary focus:ring-4 focus:ring-brand-secondary/5 outline-none transition-all font-medium" />
                     </div>
                     <div className="space-y-3">
-                      <label className="text-xs font-bold uppercase tracking-widest text-ink-muted">رقم الجوال</label>
+                      <label className="text-xs font-bold uppercase tracking-normal text-ink-muted">رقم الجوال</label>
                       <input required name="phone" type="tel" placeholder="05XXXXXXXX" className="w-full bg-bg-subtle mt-3 border border-line rounded-2xl p-4 focus:border-brand-secondary focus:ring-4 focus:ring-brand-secondary/5 outline-none transition-all font-medium" />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-3">
-                      <label className="text-xs font-bold uppercase tracking-widest text-ink-muted">البريد الإلكتروني</label>
+                      <label className="text-xs font-bold uppercase tracking-normal text-ink-muted">البريد الإلكتروني</label>
                       <input required name="email" type="email" placeholder="example@domain.com" className="w-full bg-bg-subtle mt-3 border border-line rounded-2xl p-4 focus:border-brand-secondary focus:ring-4 focus:ring-brand-secondary/5 outline-none transition-all font-medium" />
                     </div>
                     <div className="space-y-3">
-                      <label className="text-xs font-bold uppercase tracking-widest text-ink-muted">الخدمة المطلوبة</label>
+                      <label className="text-xs font-bold uppercase tracking-normal text-ink-muted">الخدمة المطلوبة</label>
                       <div className="relative mt-3">
                         <select
                           required
@@ -118,7 +118,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                   </div>
 
                   <div className="space-y-3">
-                    <label className="text-xs font-bold uppercase tracking-widest text-ink-muted">وصف المحفظة / الحالة</label>
+                    <label className="text-xs font-bold uppercase tracking-normal text-ink-muted">وصف المحفظة / الحالة</label>
                     <textarea required name="message" rows={4} placeholder="يرجى كتابة تفاصيل مختصرة عن عدد الوحدات أو المشكلة التي تواجهها..." className="w-full bg-bg-subtle mt-3 border border-line rounded-2xl p-4 focus:border-brand-secondary focus:ring-4 focus:ring-brand-secondary/5 outline-none transition-all font-medium resize-none" />
                   </div>
 

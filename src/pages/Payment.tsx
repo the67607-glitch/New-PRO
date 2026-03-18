@@ -108,7 +108,7 @@ export const Payment: React.FC = () => {
 
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-ink-muted">الاسم الكامل</label>
+                      <label className="text-xs font-bold uppercase tracking-normal text-ink-muted">الاسم الكامل</label>
                       <input
                         required
                         type="text"
@@ -120,7 +120,7 @@ export const Payment: React.FC = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-ink-muted">البريد الإلكتروني</label>
+                      <label className="text-xs font-bold uppercase tracking-normal text-ink-muted">البريد الإلكتروني</label>
                       <input
                         required
                         type="email"
@@ -132,7 +132,7 @@ export const Payment: React.FC = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-ink-muted">رقم الجوال</label>
+                      <label className="text-xs font-bold uppercase tracking-normal text-ink-muted">رقم الجوال</label>
                       <input
                         required
                         type="tel"

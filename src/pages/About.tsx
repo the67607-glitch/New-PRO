@@ -45,9 +45,9 @@ export const About: React.FC = () => {
           <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-secondary blur-[120px] rounded-full" />
           <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-brand-accent blur-[120px] rounded-full" />
         </div>
-        
+
         <div className="section-container relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
@@ -68,7 +68,7 @@ export const About: React.FC = () => {
         <div className="section-container">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
             {stats.map((stat, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ export const About: React.FC = () => {
                 className="text-center"
               >
                 <div className="text-4xl md:text-5xl font-bold text-brand-primary mb-2">{stat.value}</div>
-                <div className="text-sm text-ink-muted font-bold uppercase tracking-widest">{stat.label}</div>
+                <div className="text-sm text-ink-muted font-bold uppercase tracking-normal">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -87,7 +87,7 @@ export const About: React.FC = () => {
       {/* Mission & Vision */}
       <section className="section-container">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -108,17 +108,17 @@ export const About: React.FC = () => {
               ))}
             </ul>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="relative"
           >
             <div className="aspect-square bg-bg-subtle rounded-[3rem] overflow-hidden">
-              <img 
-                src="https://i.ibb.co/60kMrmmW/4-8nd.jpg" 
-                alt="رؤيتنا ورسالتنا" 
+              <img
+                src="https://i.ibb.co/60kMrmmW/4-8nd.jpg"
+                alt="رؤيتنا ورسالتنا"
                 className="w-full h-full object-cover transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
@@ -146,10 +146,10 @@ export const About: React.FC = () => {
             <span className="label-caps">قيمنا الجوهرية</span>
             <h2 className="text-4xl md:text-6xl font-bold text-brand-primary">المبادئ التي تحركنا</h2>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

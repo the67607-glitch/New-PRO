@@ -23,10 +23,10 @@ export const SeparateServices: React.FC<SeparateServicesProps> = () => {
         <h2 className="text-4xl md:text-6xl font-bold text-brand-primary">الخدمات المنفصلة</h2>
         <p className="text-ink-muted mt-4">خدمات دقيقة ومحددة لمعالجة حالات خاصة في محفظتك العقارية.</p>
       </div>
-      
+
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {SEPARATE_SERVICES.map((service, i) => (
-          <motion.div 
+          <motion.div
             key={i}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -39,15 +39,15 @@ export const SeparateServices: React.FC<SeparateServicesProps> = () => {
             </div>
             <h3 className="text-xl font-bold text-brand-primary mb-4">{service.title}</h3>
             <p className="text-ink-muted text-sm leading-relaxed mb-8 flex-grow">{service.desc}</p>
-            
+
             <div className="pt-6 border-t border-line flex items-center justify-between">
               <div className="flex flex-col">
-                <span className="text-[10px] uppercase tracking-widest text-ink-muted mb-1">تبدأ من</span>
+                <span className="text-[10px] uppercase tracking-normal text-ink-muted mb-1">تبدأ من</span>
                 <div className="text-brand-primary font-bold text-xl">
                   {service.price} <span className="text-xs font-normal text-ink-muted">ر.س</span>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={() => navigate(`/payment?service=${encodeURIComponent(service.title)}`)}
                 className="btn-primary py-3 px-6 text-sm group/btn"
               >

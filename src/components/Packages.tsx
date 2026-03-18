@@ -26,23 +26,22 @@ export const Packages: React.FC<PackagesProps> = () => {
         <h2 className="text-4xl md:text-6xl font-bold mb-6">اختر حجم التغطية المناسب</h2>
         <p className="text-white/50 max-w-2xl mx-auto">خطط مرنة مصممة لتناسب احتياجات الملاك الأفراد والشركات العقارية الكبرى.</p>
       </div>
-      
+
       <div className="grid lg:grid-cols-3 gap-8 relative z-10">
         {PACKAGES.map((pkg, i) => (
-          <motion.div 
+          <motion.div
             key={i}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className={`relative p-10 rounded-[2.5rem] border transition-all duration-500 flex flex-col ${
-              i === 1 
-                ? 'bg-white/10 border-brand-secondary shadow-2xl shadow-brand-secondary/10 scale-105 z-20' 
+            className={`relative p-10 rounded-[2.5rem] border transition-all duration-500 flex flex-col ${i === 1
+                ? 'bg-white/10 border-brand-secondary shadow-2xl shadow-brand-secondary/10 scale-105 z-20'
                 : 'bg-white/5 border-white/10 hover:bg-white/10'
-            }`}
+              }`}
           >
             {i === 1 && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-secondary text-brand-primary text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-secondary text-brand-primary text-[10px] font-bold uppercase tracking-normal px-4 py-1.5 rounded-full">
                 الأكثر اختياراً
               </div>
             )}
@@ -57,7 +56,7 @@ export const Packages: React.FC<PackagesProps> = () => {
             </div>
 
             <div className="flex-grow">
-              <span className="text-xs font-bold text-brand-secondary uppercase tracking-widest mb-6 block">المميزات الرئيسية</span>
+              <span className="text-xs font-bold text-brand-secondary uppercase tracking-normal mb-6 block">المميزات الرئيسية</span>
               <ul className="space-y-5 mb-12">
                 {pkg.features.map((f, j) => (
                   <li key={j} className="flex items-start gap-4 text-sm text-white/70 group">
@@ -68,13 +67,12 @@ export const Packages: React.FC<PackagesProps> = () => {
               </ul>
             </div>
 
-            <button 
+            <button
               onClick={() => navigate(`/payment?service=${encodeURIComponent(pkg.name)}`)}
-              className={`w-full py-5 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 group ${
-                i === 1 
-                  ? 'bg-brand-secondary text-brand-primary hover:bg-white' 
+              className={`w-full py-5 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 group ${i === 1
+                  ? 'bg-brand-secondary text-brand-primary hover:bg-white'
                   : 'bg-white/10 text-white hover:bg-white hover:text-brand-primary'
-              }`}
+                }`}
             >
               <span>اختيار الباقة</span>
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />

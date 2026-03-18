@@ -33,7 +33,7 @@
   h4,
   h5,
   h6 {
-    @apply tracking-[-0.02em] font-extrabold;
+    @apply font-extrabold;
   }
 }
 
